@@ -25,6 +25,11 @@ form {
         margin: 5px 0
     }
 
+input {
+    line-height: 40px;
+    font-size: 20px;
+}
+
 .states {
     display: inline-block;
     width: 100%;
@@ -57,12 +62,19 @@ form {
         box-shadow: 0 2px 8px #0008;
         position: relative;
     }
+        .list > .item > * {
+            margin: 5px 0;
+        }
     .list > .item > input {
         display: none;
         width: 100%;
     }
         .list > .item.editing > input {
             display: inline-block;
+        }
+        .list > .item > .title {
+            line-height: 30px;
+            font-size: 20px;
         }
         .list > .item.editing > .title {
             display: none;
