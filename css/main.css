@@ -1,0 +1,101 @@
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+    display: inline-block;
+    width: 500px;
+    margin: 20px calc(50% - 250px);
+}
+
+form {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    box-shadow: 0 2px 8px #0008;
+}
+    form > * {
+        display: inline-block;
+        width: 100%;
+        margin: 5px 0
+    }
+
+.states {
+    display: inline-block;
+    width: 100%;
+}
+    .states > .state {
+        display: none;
+        width: 25%;
+        float: left;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+    .states[data-state="idea"] > .state[data-state="idea"],
+    .states[data-state="todo"] > .state[data-state="todo"],
+    .states[data-state="in-progress"] > .state[data-state="in-progress"],
+    .states[data-state="done"] > .state[data-state="done"] {
+        display: inline-block;
+        background-color: #ccc;
+    }
+    .editing .state {
+        display: inline-block;
+    }
+
+.list {
+}
+    .list > .item {
+        display: inline-block;
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        box-shadow: 0 2px 8px #0008;
+        position: relative;
+    }
+    .list > .item > input {
+        display: none;
+        width: 100%;
+    }
+        .list > .item.editing > input {
+            display: inline-block;
+        }
+        .list > .item.editing > .title {
+            display: none;
+        }
+    .list > .item > .actions {
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+        .list > .item:hover > .actions {
+            display: inline-block;
+        }
+        .list > .item > .actions > .option {
+            display: none;
+            float: left;
+            padding: 5px 15px;
+            margin: 0 5px;
+            line-height: 10px;
+            font-size: 15px;
+            background-color: #eee;
+        }
+            .list > .item > .actions > .option:hover {
+                background-color: #ccc;
+                cursor: pointer;
+            }
+            .list > .item > .actions > .option[data-option="edit"],
+            .list > .item > .actions > .option[data-option="delete"],
+            .list > .item.editing > .actions > .option[data-option="save"],
+            .list > .item.editing > .actions > .option[data-option="cancel"] {
+                display: inline-block;
+            }
+            .list > .item.editing > .actions > .option[data-option="edit"],
+            .list > .item.editing > .actions > .option[data-option="delete"] {
+                display: none;
+            }
