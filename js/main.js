@@ -23,13 +23,6 @@ NOTES:
 - istriname irase
 */
 
+import { Todo } from './Todo.js';
 
-const states = ['idea', 'todo', 'in progress', 'done'];
-
-/*
-example:
-const task = {
-    title: 'Pusryciai',
-    state: 1
-}
-*/
+Todo();
