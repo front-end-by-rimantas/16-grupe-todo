@@ -85,7 +85,8 @@ input {
         top: 5px;
         right: 10px;
     }
-        .list > .item:hover > .actions {
+        .list > .item:hover > .actions,
+        .list > .item.editing > .actions {
             display: inline-block;
         }
         .list > .item > .actions > .option {

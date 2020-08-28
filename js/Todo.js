@@ -30,8 +30,25 @@ function Todo() {
         renderTask(task);
     }
 
-    function editTask() {
-        console.log('EDIT...');
+    function editTask(taskID, DOM) {
+        DOM.classList.add('editing');
+    }
+
+    function cancelTask(taskID, DOM) {
+        DOM.classList.remove('editing');
+    }
+
+    function saveTask(taskID, DOM) {
+        const input = DOM.querySelector('input');
+        const newTitle = input.value;
+        DOM.classList.remove('editing');
+        DOM.querySelector('.title').innerText = newTitle;
+
+        input.removeAttribute('value');
+        input.setAttribute('value', newTitle);
+
+        taskList[taskID - 1].title = newTitle;
+        localStorage.setItem(KEY, JSON.stringify(taskList));
     }
 
     function deleteTask(taskID) {
@@ -70,8 +87,20 @@ function Todo() {
             </div>`);
 
         const taskDOM = todoListDOM.querySelector(`#task_${data.id}`);
+        const saveDOM = taskDOM.querySelector('[data-option="save"]');
+        const cancelDOM = taskDOM.querySelector('[data-option="cancel"]');
+        const editDOM = taskDOM.querySelector('[data-option="edit"]');
         const deleteDOM = taskDOM.querySelector('[data-option="delete"]');
 
+        saveDOM.addEventListener('click', () => {
+            saveTask(data.id, taskDOM);
+        })
+        cancelDOM.addEventListener('click', () => {
+            cancelTask(data.id, taskDOM);
+        })
+        editDOM.addEventListener('click', () => {
+            editTask(data.id, taskDOM);
+        })
         deleteDOM.addEventListener('click', () => {
             deleteTask(data.id);
         })
